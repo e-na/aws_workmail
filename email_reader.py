@@ -12,7 +12,7 @@ def get_secret(secret_name):
     
 def create_subfolder(account,folder_name):
     try:
-        f=Folder(paent=account.inbox,name=folder_name)
+        f=Folder(parent=account.inbox,name=folder_name)
         f.save()
         print(f"subfolder {folder_name} created successfully!!")
         return True
@@ -26,7 +26,7 @@ def get_subfolder(account,folder_name):
     except errors.ErrorFolderNotFound as e:
         print(f"folder not found.. creating sub_folder {folder_name} in inbox..")
         if create_subfolder(account,folder_name):
-             f=Folder(paent=account.inbox,name=folder_name)
+             f=Folder(parent=account.inbox,name=folder_name)
              return f
     except Exception as e:
         print(f"Error during creating folder: {e}")
